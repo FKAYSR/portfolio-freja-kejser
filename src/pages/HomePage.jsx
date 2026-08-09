@@ -1,16 +1,14 @@
 import { Link, useLocation } from "react-router";
 import { useEffect } from "react";
 import heroImg from "../assets/hero-img.jpg";
-import projects from "../projects";
+import projects from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
 import NameTitle from "../components/NameTitle";
 import arrowIcon from "../assets/icons/arrow-white-down.svg";
-import chevronIcon from "../assets/icons/chevron.svg"
+import chevronIcon from "../assets/icons/chevron.svg";
 
-export default function HomePage({scrolled}) {
-  const skills = [
-    "Figma", "VS Code", "React"
-  ]
+export default function HomePage({ scrolled }) {
+  const skills = ["Figma", "VS Code", "React"];
 
   const location = useLocation();
 
@@ -51,12 +49,12 @@ export default function HomePage({scrolled}) {
         </div>
 
         <div>
-          <Link to="/#projects" className="hero-scroll-indicator" aria-label="Scroll to see projects">
-            <img
-              src={chevronIcon}
-              alt=""
-              className="hero-scroll-indicator-icon"
-            />
+          <Link
+            to="/#projects"
+            className="hero-scroll-indicator"
+            aria-label="Scroll to see projects"
+          >
+            <img src={chevronIcon} alt="" className="hero-scroll-indicator-icon" />
           </Link>
         </div>
       </article>
@@ -65,9 +63,11 @@ export default function HomePage({scrolled}) {
         <section id="projects">
           <h2>Explore my work</h2>
           <div>
-            {projects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
+            {projects
+              .filter((project) => project.featured)
+              .map((project) => (
+                <ProjectCard key={project.slug} project={project} />
+              ))}
           </div>
         </section>
 
@@ -104,11 +104,7 @@ export default function HomePage({scrolled}) {
             </a>
           </h3>
           <h3>
-            <a
-              href="https://github.com/FKAYSR"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://github.com/FKAYSR" target="_blank" rel="noreferrer">
               GitHub
             </a>
           </h3>
