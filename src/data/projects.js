@@ -1,4 +1,4 @@
-import merEndToast from "./assets/mer-end-toast/logo-big.png"
+import merEndToast from "../assets/mer-end-toast/logo-big.png";
 
 const projects = [
   {
