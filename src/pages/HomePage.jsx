@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import heroImg from "../assets/hero-img.jpg";
-import projects from "../projects";
+import projects from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
 
 export default function HomePage() {

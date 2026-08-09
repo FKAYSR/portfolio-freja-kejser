@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import projects from "../projects";
+import projects from "../data/projects";
 
 export default function ProjectPage() {
   const { slug } = useParams();
