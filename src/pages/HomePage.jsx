@@ -2,14 +2,14 @@ import { Link, useLocation } from "react-router";
 import { useEffect } from "react";
 import heroImg from "../assets/hero-img.jpg";
 import projects from "../data/projects";
+import learning from "../data/learning";
+import tools from "../data/tools"
 import ProjectCard from "../components/ProjectCard";
 import NameTitle from "../components/NameTitle";
 import arrowIcon from "../assets/icons/arrow-white-down.svg";
 import chevronIcon from "../assets/icons/chevron.svg";
 
 export default function HomePage({ scrolled }) {
-  const skills = ["Figma", "VS Code", "React"];
-
   const location = useLocation();
 
   useEffect(() => {
@@ -54,7 +54,11 @@ export default function HomePage({ scrolled }) {
             className="hero-scroll-indicator"
             aria-label="Scroll to see projects"
           >
-            <img src={chevronIcon} alt="" className="hero-scroll-indicator-icon" />
+            <img
+              src={chevronIcon}
+              alt=""
+              className="hero-scroll-indicator-icon"
+            />
           </Link>
         </div>
       </article>
@@ -79,16 +83,22 @@ export default function HomePage({ scrolled }) {
 
         <section id="toolkit">
           <h2>Toolkit</h2>
-          {skills.map((skill) => (
-            <p className="stack" key={skill}>
-              {skill}
+          {tools
+          .filter((tool) => tool.featured)
+          .map((tool) => (
+            <p className="stack" key={tool.title}>
+              {tool.title}
             </p>
           ))}
         </section>
 
-        <section id="exploring">
+        <section id="learning">
           <h2>Currently learning/exploring</h2>
-          <p>...</p>
+          {learning
+            .filter((item) => item.featured)
+            .map((item) => (
+              <p className="learn" key={item.title}>{item.title}</p>
+            ))}
         </section>
 
         <section id="contact">
@@ -104,7 +114,11 @@ export default function HomePage({ scrolled }) {
             </a>
           </h3>
           <h3>
-            <a href="https://github.com/FKAYSR" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/FKAYSR"
+              target="_blank"
+              rel="noreferrer"
+            >
               GitHub
             </a>
           </h3>
